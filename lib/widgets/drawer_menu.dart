@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../ui/splash.dart';
+
 class DrawerMenu extends StatelessWidget {
   final VoidCallback onToggleTheme;
   const DrawerMenu({super.key, required this.onToggleTheme});
@@ -33,6 +35,20 @@ class DrawerMenu extends StatelessWidget {
             title: const Text('Home'),
             onTap: () => Navigator.pop(context),
           ),
+ListTile(
+  leading: const Icon(Icons.home),
+  title: const Text('Splash'),
+  onTap: () {
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(
+        builder: (_) => Splash(
+          onToggleTheme: onToggleTheme,
+        ),
+      ),
+      (route) => false,
+    );
+  },
+),
         ],
       ),
     );
